@@ -937,6 +937,11 @@ endif
 ifdef SS_INCLUDE_BYPASSLKM
     include $(commands_TWRP_local_path)/safestrap/bypasslkm/Android.mk
 endif
+
+# double-free
+ifeq ($(SS_INCLUDE_DOUBLE_FREE), true)
+    include $(commands_TWRP_local_path)/safestrap/double-free/Android.mk
+endif
 endif
 
 ifeq ($(shell test $(PLATFORM_SDK_VERSION) -lt 24; echo $$?),0)
