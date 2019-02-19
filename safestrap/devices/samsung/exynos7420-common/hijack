@@ -18,6 +18,11 @@ CHARGER_BOOT=$(cat /proc/cmdline | $RECOVERY_DIR/bbx grep -c "androidboot.mode=c
 if [ "$RECOVERY_BOOT" -ne "1" ]; then
 if [ "$CHARGER_BOOT" -ne "1" ]; then
 if [ ! -f "$SS_CHECK_FILE" ]; then
+	# dobule-free
+	if [ -f "$RECOVERY_DIR/double-free" ]; then
+		. $RECOVERY_DIR/double-free
+	fi
+
 	# startup safestrap
 	RUN_SS="1"
 
